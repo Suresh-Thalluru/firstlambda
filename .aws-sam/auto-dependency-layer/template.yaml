@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'firstlambda
+
+  Sample SAM Template for firstlambda
+
+  '
+Resources:
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: HelloWorldFunction
+      Handler: datatypes.list_types
+      Runtime: python3.9
+      Architectures:
+      - x86_64
+      Layers:
+      - Fn::GetAtt:
+        - AwsSamAutoDependencyLayerNestedStack
+        - Outputs.HelloWorldFunction19d43fc4DepLayer
+  AwsSamAutoDependencyLayerNestedStack:
+    DeletionPolicy: Delete
+    Metadata:
+      CreatedBy: AWS SAM CLI sync command
+    Properties:
+      TemplateURL: C:\Users\Lenovo\Desktop\Documents\awslambdapython\firstlambda\.aws-sam\auto-dependency-layer\nested_template.yaml
+    Type: AWS::CloudFormation::Stack
